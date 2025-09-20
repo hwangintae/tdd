@@ -13,4 +13,12 @@ public class PasswordStrengthMeterTest {
 
         assertThat(result).isEqualTo(PasswordStrength.STRONG);
     }
+
+    @Test
+    void meetsOtherCriteria_except_for_Length_Then_Normal() {
+        PasswordStrengthMeter meter = new PasswordStrengthMeter();
+        PasswordStrength result = meter.meter("ab12!@A");
+
+        assertThat(result).isEqualTo(PasswordStrength.NORMAL);
+    }
 }
