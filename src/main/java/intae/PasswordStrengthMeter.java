@@ -7,15 +7,19 @@ public class PasswordStrengthMeter {
             return PasswordStrength.NORMAL;
         }
 
-        boolean containsNum = false;
-        for (char ch : password.toCharArray()) {
-            if (ch >= '0' && ch <= '9') {
-                containsNum = true;
-                break;
-            }
-        }
+        boolean containsNum = meetsContainingNumberCriteria(password);
         if (!containsNum) return PasswordStrength.NORMAL;
 
         return PasswordStrength.STRONG;
+    }
+
+    private boolean meetsContainingNumberCriteria(String password) {
+        for (char ch : password.toCharArray()) {
+            if (ch >= '0' && ch <= '9') {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
