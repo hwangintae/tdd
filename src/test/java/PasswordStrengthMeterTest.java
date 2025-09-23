@@ -1,5 +1,6 @@
 import intae.PasswordStrength;
 import intae.PasswordStrengthMeter;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -20,5 +21,8 @@ public class PasswordStrengthMeterTest {
         PasswordStrength result = meter.meter("ab12!@A");
 
         assertThat(result).isEqualTo(PasswordStrength.NORMAL);
+
+        PasswordStrength result2 = meter.meter("Ab12!c");
+        assertThat(result2).isEqualTo(PasswordStrength.NORMAL);
     }
 }
