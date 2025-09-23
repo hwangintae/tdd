@@ -36,6 +36,11 @@ public class PasswordStrengthMeterTest {
         assertStrength("ab12!@df", NORMAL);
     }
 
+    @Test
+    void meetsOnlyLengthCriteria_Then_Weak() {
+        assertStrength("abdefghi", WEAK);
+    }
+
     private void assertStrength(String password, PasswordStrength expStr) {
         PasswordStrength result = meter.meter(password);
 
