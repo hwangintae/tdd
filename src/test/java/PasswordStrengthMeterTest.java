@@ -1,36 +1,34 @@
 import intae.PasswordStrength;
 import intae.PasswordStrengthMeter;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static intae.PasswordStrength.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class PasswordStrengthMeterTest {
 
+    private PasswordStrengthMeter meter = new PasswordStrengthMeter();
+
     @Test
     void meetsAllCriteria_Then_Strong() {
-        PasswordStrengthMeter meter = new PasswordStrengthMeter();
-        PasswordStrength result = meter.meter("ab12!@AB");
-
-        assertThat(result).isEqualTo(PasswordStrength.STRONG);
+        assertStrength("ab12!@AB", STRONG);
     }
 
     @Test
     void meetsOtherCriteria_except_for_Length_Then_Normal() {
-        PasswordStrengthMeter meter = new PasswordStrengthMeter();
-        PasswordStrength result = meter.meter("ab12!@A");
+        assertStrength("ab12!@A", NORMAL);
 
-        assertThat(result).isEqualTo(PasswordStrength.NORMAL);
-
-        PasswordStrength result2 = meter.meter("Ab12!c");
-        assertThat(result2).isEqualTo(PasswordStrength.NORMAL);
+        assertStrength("Ab12!c", NORMAL);
     }
 
     @Test
     void meetsOtherCriteria_except_for_Length_Then_Normal2() {
-        PasswordStrengthMeter meter = new PasswordStrengthMeter();
-        PasswordStrength result = meter.meter("ab!@ABqwer");
+        assertStrength("ab!@ABqwer", NORMAL);
+    }
 
-        assertThat(result).isEqualTo(PasswordStrength.NORMAL);
+    private void assertStrength(String password, PasswordStrength expStr) {
+        PasswordStrength result = meter.meter(password);
+
+        assertThat(result).isEqualTo(expStr);
     }
 }
