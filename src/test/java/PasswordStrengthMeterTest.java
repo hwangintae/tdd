@@ -1,5 +1,6 @@
 import intae.PasswordStrength;
 import intae.PasswordStrengthMeter;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static intae.PasswordStrength.*;
@@ -49,6 +50,11 @@ public class PasswordStrengthMeterTest {
     @Test
     void meetsOnlyUpperCriteria_Then_Weak() {
         assertStrength("ABZEF", PasswordStrength.WEAK);
+    }
+
+    @Test
+    void meetsNoCriteria_Then_Weak() {
+        assertStrength("abc", WEAK);
     }
 
     private void assertStrength(String password, PasswordStrength expStr) {
