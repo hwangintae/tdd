@@ -11,6 +11,7 @@ public class PasswordStrengthMeter {
 
         if (lengthEnough && !containUpp && !containsNum) return PasswordStrength.WEAK;
         if (!lengthEnough && !containUpp && containsNum) return PasswordStrength.WEAK;
+        if (!lengthEnough && containUpp && !containsNum) return PasswordStrength.WEAK;
 
         if (!lengthEnough) return PasswordStrength.NORMAL;
         if (!containUpp) return PasswordStrength.NORMAL;
