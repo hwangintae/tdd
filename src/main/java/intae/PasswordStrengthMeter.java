@@ -3,19 +3,20 @@ package intae;
 public class PasswordStrengthMeter {
 
     public PasswordStrength meter(String password) {
+        int metCounts = 0;
+
         if (password == null || password.isEmpty()) return PasswordStrength.INVALID;
 
         boolean lengthEnough = password.length() >= 8;
         boolean containUpp = meetsContainingUppercaseCriteria(password);
         boolean containsNum = meetsContainingNumberCriteria(password);
 
-        if (lengthEnough && !containUpp && !containsNum) return PasswordStrength.WEAK;
-        if (!lengthEnough && !containUpp && containsNum) return PasswordStrength.WEAK;
-        if (!lengthEnough && containUpp && !containsNum) return PasswordStrength.WEAK;
+        if (lengthEnough) metCounts++;
+        if (containUpp) metCounts++;
+        if (containsNum) metCounts++;
 
-        if (!lengthEnough) return PasswordStrength.NORMAL;
-        if (!containUpp) return PasswordStrength.NORMAL;
-        if (!containsNum) return PasswordStrength.NORMAL;
+        if (metCounts == 1) return PasswordStrength.WEAK;
+        if (metCounts == 2) return PasswordStrength.NORMAL;
 
         return PasswordStrength.STRONG;
     }
