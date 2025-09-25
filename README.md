@@ -8,7 +8,7 @@ TDD 관련 인강도 듣고 [(링크)](https://www.inflearn.com/course/practical
 ## chapter01
 Junit 설정이라 생략
 
-## chapter02 TDD 시작
+## [chapter02 TDD 시작](https://github.com/hwangintae/tdd/pull/1)
 red-green-refactor의 순서에 맞게 너무 어렵지도 않은 예제로 학습할 수 있었다.
 
 TDD를 공부하면서 느끼는거지만 성격이 급해서 그런가 red-green-refactor를 지키기가 쉽지 않다.
