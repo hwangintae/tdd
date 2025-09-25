@@ -3,22 +3,24 @@ package intae;
 public class PasswordStrengthMeter {
 
     public PasswordStrength meter(String password) {
-        int metCounts = 0;
-
         if (password == null || password.isEmpty()) return PasswordStrength.INVALID;
 
-        boolean lengthEnough = password.length() >= 8;
-        boolean containUpp = meetsContainingUppercaseCriteria(password);
-        boolean containsNum = meetsContainingNumberCriteria(password);
+        int metCounts = getMetCriteriaCounts(password);
 
-        if (lengthEnough) metCounts++;
-        if (containUpp) metCounts++;
-        if (containsNum) metCounts++;
-
-        if (metCounts == 1) return PasswordStrength.WEAK;
+        if (metCounts <= 1) return PasswordStrength.WEAK;
         if (metCounts == 2) return PasswordStrength.NORMAL;
 
         return PasswordStrength.STRONG;
+    }
+
+    private int getMetCriteriaCounts(String password) {
+        int metCounts = 0;
+
+        if (password.length() >= 8) metCounts++;
+        if (meetsContainingUppercaseCriteria(password)) metCounts++;
+        if (meetsContainingNumberCriteria(password)) metCounts++;
+
+        return metCounts;
     }
 
     private boolean meetsContainingNumberCriteria(String password) {
