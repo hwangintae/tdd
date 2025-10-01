@@ -1,4 +1,4 @@
-package intae;
+package intae.chapter02;
 
 public class PasswordStrengthMeter {
 

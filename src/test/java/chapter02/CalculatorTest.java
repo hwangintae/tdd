@@ -1,4 +1,6 @@
-import intae.Calculator;
+package chapter02;
+
+import intae.chapter02.Calculator;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

@@ -1,9 +1,10 @@
-import intae.PasswordStrength;
-import intae.PasswordStrengthMeter;
-import org.junit.jupiter.api.DisplayName;
+package chapter02;
+
+import intae.chapter02.PasswordStrength;
+import intae.chapter02.PasswordStrengthMeter;
 import org.junit.jupiter.api.Test;
 
-import static intae.PasswordStrength.*;
+import static intae.chapter02.PasswordStrength.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class PasswordStrengthMeterTest {
